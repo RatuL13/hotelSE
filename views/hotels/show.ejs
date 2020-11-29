@@ -73,7 +73,8 @@
                     <p><%= hotel.description %></p>
                     <p>
                         <em>Submitted by:<!-- <a href="/users/<%= hotel.author.id%>"> --><%= hotel.author.username %></a>, <%= moment(hotel.createdAt).fromNow() %></em>
-                        <% if(currentUser&& hotel.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %> 
+                       <% if(typeof currentUser!=="undefined") { %>
+                        <% if(currentUser.isAdmin==="true" && hotel.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %> 
                         </p>
                         <a class="btn btn-warning " href="/hotels/<%= hotel._id %>/edit">Edit</a>
                         
@@ -81,6 +82,7 @@
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 <%}%>
+                <% } %>
                     </div>
             </div>
 
