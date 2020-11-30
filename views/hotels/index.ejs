@@ -24,8 +24,12 @@ if(Notification.permission==="granted"){
     <h1>Welcome To Hotel Crossroads</h1>
     <p>View our hand-picked hotels from all over the world!</p>
     <p>
+        <% if(typeof currentUser!=="undefined") { %>
+            <% if(currentUser.isAdmin==="true" && hotel.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %> 
     <a href="/hotels/new" class="btn btn-success btn-lg">Add New Hotel</a>
-    </p>
+           <% } %>
+           <% } %>
+</p>
     <p>
         <form id="special" action="/hotels" method="GET"class="form-inline">
             <div class="form-group">
